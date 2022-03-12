@@ -1,5 +1,9 @@
+
+from src.functions.task_generator import generate_task
+
+
 def main():
-    print()
+    generate_task()
 
 
 if __name__ == "__main__":
