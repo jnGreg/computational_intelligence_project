@@ -15,7 +15,7 @@ class Order:
     @point.setter
     def point(self, value: Point) -> None:
         self._point = value
-        
+
     @property
     def truck(self) -> Truck:
         return self._truck
