@@ -4,8 +4,8 @@ from truck import Truck
 
 
 class Warehouse(Point):
-    def __init__(self, x: int, y: int, stock_amount: int, starting_trucks: list):
-        super().__init__(x, y, stock_amount)
+    def __init__(self, x: int, y: int, cargo_amount: int, cargo_type: str, starting_trucks: list):
+        super().__init__(x, y, cargo_amount, cargo_type)
         self.starting_trucks = starting_trucks
 
     @property

@@ -1,9 +1,10 @@
 
 class Point:
-    def __init__(self, x: int, y: int, stock_amount: int):
+    def __init__(self, x: int, y: int, cargo_amount: int, cargo_type: str):
         self._x = x
         self._y = y
-        self._stock_amount = stock_amount
+        self._cargo_amount = cargo_amount
+        self._cargo_type = cargo_type
 
     @property
     def x(self) -> int:
@@ -22,10 +23,18 @@ class Point:
         self._y = value
 
     @property
-    def stock_amount(self) -> int:
-        return self._stock_amount
+    def cargo_amount(self) -> int:
+        return self._cargo_amount
 
-    @stock_amount.setter
-    def stock_amount(self, value: int) -> None:
-        self._stock_amount = value
+    @cargo_amount.setter
+    def cargo_amount(self, value: int) -> None:
+        self._cargo_amount = value
+
+    @property
+    def cargo_type(self) -> str:
+        return self._cargo_type
+
+    @cargo_type.setter
+    def cargo_type(self, value: str) -> None:
+        self._cargo_type = value
 
