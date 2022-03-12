@@ -1,6 +1,5 @@
 
-from point import Point
-from truck import Truck
+from src.classes.point import Point
 
 
 class Warehouse(Point):
