@@ -1,6 +1,6 @@
 
 from src.classes.transport_task import TransportTask
-import random
+from random import randint, choice, sample
 
 
 def generate_task() -> TransportTask:
@@ -13,31 +13,31 @@ def generate_task() -> TransportTask:
     :return TransportTask: generated transport task to solve later
     """
 
-    n_points = random.randint(400, 600)
+    n_points = randint(400, 600)
     points = []
     excluded = []
     cargo_types = ['tuna', 'uranium', 'oranges']
     i = 0
     while i < n_points:
-        x = random.randint(*(0, 100))
-        y = random.randint(*(0, 100))
+        x = randint(*(0, 100))
+        y = randint(*(0, 100))
         if (x, y) in excluded: continue
         excluded.append((x, y))
-        cargo_amount = random.randint(100, 200)
-        cargo_type = random.choice(cargo_types)
+        cargo_amount = randint(100, 200)*choice([-1, 1])
+        cargo_type = choice(cargo_types)
         points.append((x, y, cargo_amount, cargo_type))
         i += 1
 
     n_warehouses = 5
-    warehouses = random.sample(points, n_warehouses)
+    warehouses = sample(points, n_warehouses)
 
     trucks = []
-    n_trucks = random.randint(3, 6)
+    n_trucks = randint(3, 6)
     truck_colours = ['red', 'green', 'blue']
     unload_time = 2
 
     for i in range(n_trucks):
-        truck_colour = random.choice(truck_colours)
+        truck_colour = choice(truck_colours)
         if truck_colour == "red":
             capacity = 2000
             load_time = 3
@@ -50,7 +50,7 @@ def generate_task() -> TransportTask:
             capacity = 1500
             load_time = 2
             speed = 1
-        start_point = random.choice(warehouses)
+        start_point = choice(warehouses)
         trucks.append((truck_colour, capacity, load_time, unload_time, speed, start_point))
 
     return TransportTask(warehouses, trucks, points)
