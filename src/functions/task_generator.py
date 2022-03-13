@@ -30,6 +30,9 @@ def generate_task() -> TransportTask:
 
     n_warehouses = 5
     warehouses = sample(points, n_warehouses)
+    warehouses_new = []
+    [warehouses_new.append(warehouses[index][:2]) for index, _ in enumerate(warehouses)]
+    warehouses = warehouses_new
 
     trucks = []
     n_trucks = randint(3, 6)
