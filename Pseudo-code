@@ -1,0 +1,13 @@
+ZAŁADUNEK W LOKALIZACJACH POCZĄTKOWYCH
+random przypisanie pojazdów do punktów startowych
+ZaladunekPojazdu()
+While samochod.załadowanyTowar < samochod.limitŁadunkowy:
+		wyszukaj punkt dostawy/odbioru znajdujący się najbliżej magazynu 
+		samochod.załadowanyTowar+=Punkt.Waga
+		samochod.CzasObjazdu += samochod.CzasZaladunku
+		usuń/oznacz punkt z ListaPunktow
+ustal najlepszą kolejność dla dostarczenia załadowanych towarów (komiwojażer?)
+
+for Magazyn in ListaMagazynow
+  for Samochod in Magazyn
+	  ZaladunekPojazdu()
