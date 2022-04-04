@@ -57,7 +57,7 @@ def generate_task() -> TransportTask:
         cargo = [{
             'tuna': 0,
             'oranges': 0,
-            'uranium': ''
+            'uranium': 0
         }]
         trucks.append((truck_colour, capacity, load_time, unload_time, speed, start_point, cargo))
 
