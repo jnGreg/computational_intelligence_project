@@ -4,13 +4,14 @@ from warehouse import Warehouse
 
 class Truck:
     def __init__(self, colour: str, capacity: int, load_time: int, unload_time: int,
-                 speed: float, start_point: Warehouse):
+                 speed: float, start_point: Warehouse, cargo: [{}]):
         self._colour = colour
         self._capacity = capacity
         self._load_time = load_time
         self._unload_time = unload_time
         self._speed = speed
         self._start_point = start_point
+        self._cargo = cargo
 
     @property
     def colour(self) -> str:
@@ -51,5 +52,13 @@ class Truck:
     @start_point.setter
     def start_point(self, value: Warehouse) -> None:
         self._start_point = value
+
+    @property
+    def cargo(self) -> [{}]:
+        return self._cargo
+
+    @cargo.setter
+    def cargo(self, value: [{}]) -> None:
+        self._cargo = value
 
 
