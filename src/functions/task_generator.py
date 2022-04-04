@@ -54,6 +54,11 @@ def generate_task() -> TransportTask:
             load_time = 2
             speed = 1
         start_point = choice(warehouses)
-        trucks.append((truck_colour, capacity, load_time, unload_time, speed, start_point))
+        cargo = [{
+            'tuna': 0,
+            'oranges': 0,
+            'uranium': ''
+        }]
+        trucks.append((truck_colour, capacity, load_time, unload_time, speed, start_point, cargo))
 
     return TransportTask(warehouses, trucks, points)
