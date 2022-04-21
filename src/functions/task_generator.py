@@ -1,5 +1,8 @@
 
-from src.classes.transport_task import TransportTask
+from classes.transport_task import TransportTask
+from classes.point import Point
+from classes.truck import Truck
+
 from random import randint, choice, sample
 
 
@@ -25,40 +28,33 @@ def generate_task() -> TransportTask:
         excluded.append((x, y))
         cargo_amount = randint(100, 200)*choice([-1, 1])
         cargo_type = choice(cargo_types)
-        points.append((x, y, cargo_amount, cargo_type))
+        point={
+               'location':(x, y),
+               'cargo_amount':cargo_amount,
+               'cargo_type': cargo_type,
+               'magazine':False
+            }
+        points.append(point)
         i += 1
 
     n_warehouses = 5
     warehouses = sample(points, n_warehouses)
-    warehouses_new = []
-    [warehouses_new.append(warehouses[index][:2]) for index, _ in enumerate(warehouses)]
-    warehouses = warehouses_new
+    for x in warehouses:
+        x['magazine']=True
+        x['cargo_amount']=0
+        x['cargo_type']=None
+
+    points.extend(warehouses)
+    points=[Point(x['location'], x['magazine'],x['cargo_amount']) for x in points]
 
     trucks = []
     n_trucks = randint(3, 6)
     truck_colours = ['red', 'green', 'blue']
-    unload_time = 2
+    warehouses=[x['location'] for x in warehouses]
 
     for i in range(n_trucks):
         truck_colour = choice(truck_colours)
-        if truck_colour == "red":
-            capacity = 2000
-            load_time = 3
-            speed = 0.75
-        elif truck_colour == "green":
-            capacity = 1000
-            load_time = 1
-            speed = 1.5
-        else:
-            capacity = 1500
-            load_time = 2
-            speed = 1
         start_point = choice(warehouses)
-        cargo = [{
-            'tuna': 0,
-            'oranges': 0,
-            'uranium': 0
-        }]
-        trucks.append((truck_colour, capacity, load_time, unload_time, speed, start_point, cargo))
-
-    return TransportTask(warehouses, trucks, points)
+        trucks.append(Truck(truck_colour, start_point))
+        
+    return TransportTask(trucks, points)
