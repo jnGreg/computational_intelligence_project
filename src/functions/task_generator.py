@@ -1,4 +1,3 @@
-
 from src.classes.transport_task import TransportTask
 from random import randint, choice, sample
 
@@ -9,11 +8,10 @@ def generate_task() -> TransportTask:
             400 to 600 points of coordinates x & y in range [0, 100]
                 and cargo amount of [-200 to -100]U[100 to 200] kg of random cargo type for each,
             5 warehouses randomly chosen from the points list.
-
     :return TransportTask: generated transport task to solve later
     """
 
-    n_points = randint(400, 600)
+    n_points = randint(100, 200)
     points = []
     excluded = []
     cargo_types = ['tuna', 'uranium', 'oranges']

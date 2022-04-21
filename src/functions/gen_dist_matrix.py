@@ -1,6 +1,6 @@
 import pandas as pd
 from scipy.spatial import distance
-from task_generator import generate_task
+
 import math
 
 def calc_euc_dist(p1, p2):

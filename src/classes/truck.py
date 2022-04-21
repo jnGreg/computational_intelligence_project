@@ -1,5 +1,5 @@
 
-from warehouse import Warehouse
+from src.classes.warehouse import Warehouse
 
 
 class Truck:

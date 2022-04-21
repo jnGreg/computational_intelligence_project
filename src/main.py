@@ -7,5 +7,7 @@ def main():
     generate_dist_matrix(T.points)
 
 
+    print(generate_dist_matrix(T.points))
+
 if __name__ == "__main__":
     main()
