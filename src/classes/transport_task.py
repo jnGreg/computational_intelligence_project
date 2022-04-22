@@ -1,17 +1,9 @@
 
 class TransportTask:
-    def __init__(self, warehouses: list, trucks: list, points: list):
-        self._warehouses = warehouses
+    def __init__(self, trucks: list, points: list):
         self._trucks = trucks
         self._points = points
 
-    @property
-    def warehouses(self) -> list:
-        return self._warehouses
-
-    @warehouses.setter
-    def warehouses(self, value: list) -> None:
-        self._warehouses = value
 
     @property
     def trucks(self) -> list:

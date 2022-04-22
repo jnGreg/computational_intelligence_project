@@ -1,17 +1,42 @@
 
-from src.classes.warehouse import Warehouse
 
 
-class Truck:
-    def __init__(self, colour: str, capacity: int, load_time: int, unload_time: int,
-                 speed: float, start_point: Warehouse, cargo: [{}]):
-        self._colour = colour
-        self._capacity = capacity
-        self._load_time = load_time
-        self._unload_time = unload_time
-        self._speed = speed
-        self._start_point = start_point
-        self._cargo = cargo
+class Truck():
+
+    def __init__(self, colour: str, location: tuple) -> None:
+        self.cargo_amount=0
+        self.total_time=0
+        self.total_distance=0
+        self.colour=colour
+        self.location=location
+        self.capacity = 1000 if self.colour == 'green' else (1500 if self.colour == 'blue' else  (2000 if 'red' else None))
+        self.speed = 1.5 if self.colour == 'green' else (1 if self.colour == 'blue' else (0.75 if 'red' else None))
+        self.load_speed = 1 if self.colour == 'green' else (2 if self.colour == 'blue' else (3 if 'red' else None))
+        self.unload_speed=4
+
+    @property
+    def cargo_amount(self) -> int:
+        return self._cargo_amount
+
+    @cargo_amount.setter
+    def cargo_amount(self, value: int) -> None:
+        self._cargo_amount = value
+
+    @property
+    def total_time(self) -> int:
+        return self._total_time
+
+    @total_time.setter
+    def total_time(self, value: int) -> None:
+        self._total_time = value
+
+    @property
+    def total_distance(self) -> int:
+        return self._total_distance
+
+    @total_distance.setter
+    def total_distance(self, value: int) -> None:
+        self._total_distance = value
 
     @property
     def colour(self) -> str:
@@ -22,20 +47,20 @@ class Truck:
         self._colour = value
 
     @property
-    def load_time(self) -> int:
-        return self._unload_time
+    def load_speed(self) -> int:
+        return self._load_speed
 
-    @load_time.setter
-    def load_time(self, value: int) -> None:
-        self._load_time = value
+    @load_speed.setter
+    def load_speed(self, value: int) -> None:
+        self._load_speed = value
 
     @property
-    def unload_time(self) -> int:
-        return self._unload_time
+    def unload_speed(self) -> int:
+        return self._unload_speed
 
-    @unload_time.setter
-    def unload_time(self, value: int) -> None:
-        self._unload_time = value
+    @unload_speed.setter
+    def unload_speed(self, value: int) -> None:
+        self._unload_speed = value
 
     @property
     def speed(self) -> float:
@@ -45,20 +70,14 @@ class Truck:
     def speed(self, value: float) -> None:
         self._speed = value
 
-    @property
-    def start_point(self) -> Warehouse:
-        return self._start_point
 
-    @start_point.setter
-    def start_point(self, value: Warehouse) -> None:
-        self._start_point = value
+    def __str__(self) -> str:
+        return f"""
+        Car
+            Colour: {self.colour}
+            Cargo: {self.cargo_amount} / {self.capacity} kg
+            Location: {self.location}
+            Total Time: {self.total_time} s
+            Total distance  {self.total_distance} km 
 
-    @property
-    def cargo(self) -> [{}]:
-        return self._cargo
-
-    @cargo.setter
-    def cargo(self, value: [{}]) -> None:
-        self._cargo = value
-
-
+         """
