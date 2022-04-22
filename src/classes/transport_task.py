@@ -4,7 +4,6 @@ class TransportTask:
         self._trucks = trucks
         self._points = points
 
-
     @property
     def trucks(self) -> list:
         return self._trucks

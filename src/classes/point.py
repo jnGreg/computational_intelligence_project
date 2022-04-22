@@ -1,11 +1,10 @@
 
-class Point():
-    def __init__(self,location: tuple, magazine: bool, cargo_amount: int) -> None:
-        self.location=location
-        self.magazine=magazine
-        self.status='active' if self.magazine==False else 'magazine'
-        self.cargo_amount=cargo_amount if self.magazine==False else 0
-            
+class Point:
+    def __init__(self, location: tuple, magazine: bool, cargo_amount: int) -> None:
+        self.location = location
+        self.magazine = magazine
+        self.status = 'active' if self.magazine is False else 'magazine'
+        self.cargo_amount = cargo_amount if self.magazine is False else 0
 
     @property
     def location(self) -> int:
@@ -39,7 +38,15 @@ class Point():
     def cargo_amount(self, value: int) -> None:
         self._cargo_amount = value
 
+    def __str__(self) -> str:
+        return f""" 
+            {'Magazine' if self.magazine == True else 'Point'}
+                Location: {self.location}
+                Order: {self.cargo_amount} kg
+            """
 
+
+"""
     @property
     def cargo_type(self) -> str:
         return self._cargo_type
@@ -47,12 +54,4 @@ class Point():
     @cargo_type.setter
     def cargo_type(self, value: str) -> None:
         self._cargo_type = value
-
-    def __str__(self) -> str:
-        return f""" 
-        {'Magazine' if self.magazine==True else 'Point'}
-            Location: {self.location}
-            Order: {self.cargo_amount} kg
-
-
-        """
+"""

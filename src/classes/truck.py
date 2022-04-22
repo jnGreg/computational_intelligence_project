@@ -1,18 +1,17 @@
 
 
-
-class Truck():
+class Truck:
 
     def __init__(self, colour: str, location: tuple) -> None:
-        self.cargo_amount=0
-        self.total_time=0
-        self.total_distance=0
-        self.colour=colour
-        self.location=location
-        self.capacity = 1000 if self.colour == 'green' else (1500 if self.colour == 'blue' else  (2000 if 'red' else None))
+        self.cargo_amount = 0
+        self.total_time = 0
+        self.total_distance = 0
+        self.colour = colour
+        self.location = location
+        self.capacity = 1000 if self.colour == 'green' else (1500 if self.colour == 'blue' else (2000 if 'red' else None))
         self.speed = 1.5 if self.colour == 'green' else (1 if self.colour == 'blue' else (0.75 if 'red' else None))
         self.load_speed = 1 if self.colour == 'green' else (2 if self.colour == 'blue' else (3 if 'red' else None))
-        self.unload_speed=4
+        self.unload_speed = 4
 
     @property
     def cargo_amount(self) -> int:
@@ -69,7 +68,6 @@ class Truck():
     @speed.setter
     def speed(self, value: float) -> None:
         self._speed = value
-
 
     def __str__(self) -> str:
         return f"""
