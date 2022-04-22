@@ -6,7 +6,7 @@ def generate_task() -> TransportTask:
     """ For the daily transport task generates lists of:
             3 to 6 trucks of red, green or blue colour, parked in randomly chosen warehouse,
             400 to 600 points of coordinates x & y in range [0, 100]
-                and cargo amount of [-200 to -100]U[100 to 200] kg of random cargo type for each,
+                and cargo amount of [-200 to -100]U[100 to 200] kg of same cargo type for each,
             5 warehouses randomly chosen from the points list.
     :return TransportTask: generated transport task to solve later
     """
@@ -14,16 +14,17 @@ def generate_task() -> TransportTask:
     n_points = randint(100, 200)
     points = []
     excluded = []
-    cargo_types = ['tuna', 'uranium', 'oranges']
+    # cargo_types = ['tuna', 'uranium', 'oranges']
     i = 0
     while i < n_points:
         x = randint(*(0, 100))
         y = randint(*(0, 100))
-        if (x, y) in excluded: continue
+        if (x, y) in excluded:
+            continue
         excluded.append((x, y))
         cargo_amount = randint(100, 200)*choice([-1, 1])
-        cargo_type = choice(cargo_types)
-        points.append((x, y, cargo_amount, cargo_type))
+        # cargo_type = choice(cargo_types)
+        points.append((x, y, cargo_amount))
         i += 1
 
     n_warehouses = 5
@@ -38,25 +39,8 @@ def generate_task() -> TransportTask:
     unload_time = 2
 
     for i in range(n_trucks):
-        truck_colour = choice(truck_colours)
-        if truck_colour == "red":
-            capacity = 2000
-            load_time = 3
-            speed = 0.75
-        elif truck_colour == "green":
-            capacity = 1000
-            load_time = 1
-            speed = 1.5
-        else:
-            capacity = 1500
-            load_time = 2
-            speed = 1
+        colour = choice(truck_colours)
         start_point = choice(warehouses)
-        cargo = [{
-            'tuna': 0,
-            'oranges': 0,
-            'uranium': 0
-        }]
-        trucks.append((truck_colour, capacity, load_time, unload_time, speed, start_point, cargo))
+        trucks.append((colour, start_point))
 
-    return TransportTask(warehouses, trucks, points)
+    return TransportTask(trucks, points)

@@ -9,9 +9,8 @@ df = generate_dist_matrix(T.points)
 
 listOfDFRows = df.to_numpy().tolist()
 
-#for row in listOfDFRows:
-   # print(row)
-
+# for row in listOfDFRows:
+#   print(row)
 
 
 def create_data_model():
@@ -21,8 +20,6 @@ def create_data_model():
     data['num_vehicles'] = 4
     data['depot'] = 0
     return data
-
-
 
 
 def print_solution(data, manager, routing, solution):
@@ -57,7 +54,6 @@ def main():
 
     # Create Routing Model.
     routing = pywrapcp.RoutingModel(manager)
-
 
     # Create and register a transit callback.
     def distance_callback(from_index, to_index):
