@@ -4,20 +4,23 @@ from ortools.constraint_solver import pywrapcp
 from src.functions.gen_dist_matrix import generate_dist_matrix
 from src.functions.task_generator import generate_task
 
-T = generate_task()
+T = generate_task(40, 60)
 df = generate_dist_matrix(T.points)
+
+print(df)
 
 listOfDFRows = df.to_numpy().tolist()
 
 # for row in listOfDFRows:
 #   print(row)
-
+#
+# print(len(T.trucks))
 
 def create_data_model():
 
     data = {}
     data['distance_matrix'] = listOfDFRows
-    data['num_vehicles'] = 4
+    data['num_vehicles'] = len(T.trucks)
     data['depot'] = 0
     return data
 
@@ -43,7 +46,7 @@ def print_solution(data, manager, routing, solution):
     print('Maximum of the route distances: {}m'.format(max_route_distance))
 
 
-def main():
+def vrp():
     """Entry point of the program."""
     # Instantiate the data problem.
     data = create_data_model()
@@ -51,6 +54,7 @@ def main():
     # Create the routing index manager.
     manager = pywrapcp.RoutingIndexManager(len(data['distance_matrix']),
                                            data['num_vehicles'], data['depot'])
+
 
     # Create Routing Model.
     routing = pywrapcp.RoutingModel(manager)
@@ -97,5 +101,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    vrp()
 
