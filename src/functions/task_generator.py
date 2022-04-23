@@ -1,22 +1,25 @@
 
-from classes.transport_task import TransportTask
-from classes.point import Point
-from classes.truck import Truck
+from src.classes.transport_task import TransportTask
+from src.classes.point import Point
+from src.classes.truck import Truck
 
 from random import randint, choice, sample
 
 
-def generate_task() -> TransportTask:
+def generate_task(min_points: int, max_points: int) -> TransportTask:
     """ For the daily transport task generates lists of:
             3 to 6 trucks of red, green or blue colour, parked in randomly chosen warehouse,
             400 to 600 points of coordinates x & y in range [0, 100]
                 and cargo amount of [-200 to -100]U[100 to 200] kg of random cargo type for each,
             5 warehouses randomly chosen from the points list.
-
+    min_points: int
+        minimal number of points for daily_task
+    max_points: int
+        maximum number of points for daily_task
     :return TransportTask: generated transport task to solve later
     """
 
-    n_points = randint(400, 600)
+    n_points = randint(min_points, max_points)
     points = []
     excluded = []
     cargo_types = ['tuna', 'uranium', 'oranges']
