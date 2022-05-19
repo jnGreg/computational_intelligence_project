@@ -1,5 +1,6 @@
 from functions.gen_dist_matrix import generate_dist_matrix
 from functions.task_generator import generate_task
+from functions.drive_truck import drive_truck
 from functions.load_truck import load_truck
 from functions.unload_truck import unload_truck
 from functions.vrp_solution import vrp
@@ -31,7 +32,27 @@ def main():
 
     #### VRP solution
     print('VRP')
-    vrp()
+    routes = vrp()
+
+    # Display the routes.
+    time_for_all_trucks = 0
+    for i, route in enumerate(routes):
+        print('Route', i, route)
+        car = cars[int(i)]
+        print("Status pojazdu przed trasą", car)
+        for p in route:
+            if points[p].cargo_amount > 0:
+                car, point = unload_truck(car, points[p])
+                #car = drive_truck(car.location, points[p].location) to jeszcze nie działa]
+                time_for_all_trucks += car.total_time
+            else:
+                car, point =load_truck(car, points[p])
+                time_for_all_trucks += car.total_time
+        print("Status pojazdu po trasie", car)
+        print("czas całkowity", time_for_all_trucks, " sekund")
+
+
+
 
 
 if __name__ == "__main__":

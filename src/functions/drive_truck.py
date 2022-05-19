@@ -1,6 +1,6 @@
 from src.classes.point import Point
 from src.classes.truck import Truck
-from gen_dist_matrix import calc_euc_dist
+from src.functions.gen_dist_matrix import calc_euc_dist
 
 
 def drive_truck(truck: Truck, end_point: Point) -> Truck:

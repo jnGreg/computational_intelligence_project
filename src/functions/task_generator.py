@@ -57,7 +57,21 @@ def generate_task(min_points: int, max_points: int) -> TransportTask:
 
     for i in range(n_trucks):
         truck_colour = choice(truck_colours)
+        if truck_colour == "red":
+            capacity = 2000
+            load_time = 3
+            speed = 0.75
+        elif truck_colour == "green":
+            capacity = 1000
+            load_time = 1
+            speed = 1.5
+        else:
+            capacity = 1500
+            load_time = 2
+            speed = 1
         start_point = choice(warehouses)
         trucks.append(Truck(truck_colour, start_point))
-        
+
     return TransportTask(trucks, points)
+
+    return TransportTask(warehouses, trucks, points)
