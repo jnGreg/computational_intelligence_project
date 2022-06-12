@@ -47,7 +47,7 @@ def generate_task(min_points: int, max_points: int) -> TransportTask:
         x['cargo_amount']=0
         x['cargo_type']=None
 
-    points.extend(warehouses)
+    #points.extend(warehouses)
     points=[Point(x['location'], x['magazine'],x['cargo_amount']) for x in points]
 
     trucks = []
