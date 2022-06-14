@@ -15,8 +15,8 @@ def main():
     df = generate_dist_matrix(T.points)
     print("Task initiation info")
     print("Number of points", len(T.points)+1)
-    print("Number of trucks", len(T.trucks)+1)
-    print("Truck specyfication")
+    print("Number of trucks", len(T.trucks))
+    print("Truck specification")
     for t in T.trucks:
         print(t)
 
