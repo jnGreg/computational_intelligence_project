@@ -1,0 +1,41 @@
+ZAŁADUNEK W LOKALIZACJACH POCZĄTKOWYCH
+random przypisanie pojazdów do punktów startowych
+ZaladunekPojazdu()
+While samochod.załadowanyTowar < samochod.limitŁadunkowy:
+		wyszukaj punkt dostawy/odbioru znajdujący się najbliżej magazynu 
+		samochod.załadowanyTowar+=Punkt.Waga
+		samochod.CzasObjazdu += samochod.CzasZaladunku
+		usuń/oznacz punkt z ListaPunktow
+ustal najlepszą kolejność dla dostarczenia załadowanych towarów (komiwojażer?)
+
+for Magazyn in ListaMagazynow
+  for Samochod in Magazyn
+	  ZaladunekPojazdu()
+
+
+
+ROZPOCZĘCIE KURSU 
+Iteracja po liście punktów zgodnie z wybraną wcześniej najkrótszą trasą
+
+For Samochod in  ListaSamochodow
+For punkt in Samochod.wyznaczonaTrasa)
+	If punkt = PunktDostawy
+		samochod.aktualnaLadownosc -= Punkt.waga
+	else if punkt = PunktObdbioru
+		samochod.aktualnaLadownosc += Punkt.Waga
+	else if punkt = Magazyn
+		samochod.aktualnaLadownosc -= Suma(PunktOdbioru.waga)
+		ZaladunekPojazdu()
+		
+	załadowanyTowar -= Punkt.waga
+	samochod.czasObjazdu += Punkt.czas + samochod.czasRozładunku
+	wyszukaj NajbliższyPunktOdbioru
+wyszukaj NalbliższyMagazn
+
+	If NalbliższyPunktOdbioru.odległosc < kolejnyPunktDostawy.odleglosc 
+	&& NajblizszyPunktOdbioru.Waga < samochod.AktualnaLadownosc
+		Dodaj NajbliższyPunktOdbioru do samochod.wyznaczonaTrasa
+		OdebranePaczki += Punkt.Waga
+	If Samochod.aktualnaŁadownosc < 0.40 * samochod.MaksymalnaŁadownosc       
+		&& NajbliższyMagazyn.Odleglosc < kolejnyPunktDostawy.odległosc
+			Dodaj najbliższyMagazyn do samochod.wyznaczonaTrasa
