@@ -6,7 +6,9 @@ from functions.drive_truck import drive_truck
 from functions.load_truck import load_truck
 from functions.unload_truck import unload_truck
 from functions.vrp_solution import cvrp
+from functions.visualization import cvrp_visulization_before,cvrp_visulization_after
 import pandas as pd
+
 
 def main():
     T = generate_task(400,600)
@@ -18,12 +20,10 @@ def main():
     for t in T.trucks:
         print(t)
 
-
-
     print('CVRP solution ')
-    cvrp(T)
-
-
+    routes=cvrp(T)
+    cvrp_visulization_before(T)
+    cvrp_visulization_after(T, routes)
 
 
 

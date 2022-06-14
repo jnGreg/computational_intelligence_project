@@ -3,8 +3,8 @@ import random
 
 from ortools.constraint_solver import routing_enums_pb2
 from ortools.constraint_solver import pywrapcp
-from src.functions.gen_dist_matrix import generate_dist_matrix
-from src.functions.task_generator import generate_task
+from functions.gen_dist_matrix import generate_dist_matrix
+from functions.task_generator import generate_task
 
 #
 
@@ -238,7 +238,7 @@ def cvrp(Task):
                 4	ROUTING_INVALID: Model, model parameters, or flags are not valid.""")
 
 
-
+    return routes
 
 
 #if __name__ == '__main__':
